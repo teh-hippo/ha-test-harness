@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.DS_Store
+
+# Local benches and harness scratch state
+ha-config/
+podman/config/.storage/
+homekit/pairings/
+rest/*.token

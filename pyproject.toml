@@ -1,0 +1,27 @@
+[project]
+name = "ha-test-harness"
+version = "0.1.0"
+description = "Reusable, hardware-free test harness for Home Assistant custom integrations"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.14.2,<3.15"
+
+[dependency-groups]
+dev = [
+  "coverage>=7",
+  "pytest-homeassistant-custom-component==0.13.344",
+  "ruff>=0.13.0",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+# The mock lives under mocks/custom_components so Home Assistant's loader can
+# import it as the top-level `custom_components` package during tests.
+pythonpath = ["mocks"]
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+fail_under = 70
