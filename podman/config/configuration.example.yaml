@@ -1,0 +1,49 @@
+# Generic Home Assistant bench config for the test harness.
+#
+# Out of the box this loads the mock_climate integration and a HomeKit bridge
+# that exposes the mock entities, so you can run the headless HAP smoke
+# (../homekit) with no real device and no patched core. Add your own
+# integration's config below the marked line.
+
+default_config:
+
+logger:
+  default: info
+  logs:
+    # Raise your integration to debug while you iterate, e.g.
+    # custom_components.your_integration: debug
+    homeassistant.components.homekit: info
+
+# The reusable mock device. See ../mocks for how to author more.
+mock_climate:
+
+homekit:
+  - name: Harness Bridge
+    port: 21063
+    filter:
+      include_entities:
+        - climate.mock_daikin
+        - climate.mock_dual_swing
+
+# --- add your integration under test below -----------------------------------
+#
+# Example A, a custom component that routes an entity (replace with yours):
+#
+#   your_integration:
+#     include_entities:
+#       - climate.mock_daikin
+#
+# Example B, native opt-in on a dev-core / patched-core bench (see ../podman
+# README): tell the built-in homekit bridge to expose the mock as a
+# HeaterCooler rather than a Thermostat:
+#
+#   homekit:
+#     - name: Harness Bridge
+#       port: 21063
+#       filter:
+#         include_entities:
+#           - climate.mock_daikin
+#           - climate.mock_dual_swing
+#       entity_config:
+#         climate.mock_daikin:
+#           type: heater_cooler
