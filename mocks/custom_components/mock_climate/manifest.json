@@ -1,0 +1,12 @@
+{
+  "domain": "mock_climate",
+  "name": "Mock Climate",
+  "codeowners": ["@teh-hippo"],
+  "config_flow": true,
+  "documentation": "https://github.com/teh-hippo/ha-test-harness",
+  "integration_type": "hub",
+  "iot_class": "local_push",
+  "requirements": [],
+  "single_config_entry": true,
+  "version": "0.1.0"
+}
