@@ -25,3 +25,6 @@ branch = true
 
 [tool.coverage.report]
 fail_under = 70
+
+[tool.uv]
+override-dependencies = ["cryptography>=50.0.0"]
