@@ -1,4 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>teh-hippo/common-repo-configs//renovate/default.json5"]
+  "extends": ["github>teh-hippo/common-repo-configs//renovate/default.json5"],
+  "packageRules": [
+    {
+      "description": "Keep the Python requirement aligned with the supported Home Assistant runtime",
+      "matchManagers": ["pep621"],
+      "matchDepTypes": ["requires-python"],
+      "matchPackageNames": ["python"],
+      "allowedVersions": "<3.15"
+    }
+  ]
 }
